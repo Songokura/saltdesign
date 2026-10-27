@@ -195,43 +195,40 @@ body.menu-open { overflow: hidden; }
 .plan .floor { fill: url(#hatch); }
 .plan .walls rect, .plan .walls line { fill: none; stroke: var(--bronze2); stroke-width: 4; stroke-linecap: square; transform-box: fill-box; transition: transform .9s cubic-bezier(.2,.8,.2,1); }
 .plan .walls .win-mark { fill: var(--mint); stroke: none; }
-.plan .walls .door { fill: var(--ink); stroke: none; }
-.plan .w-a { transform-origin: 50% 0; }
-.plan .w-c { transform-origin: 50% 0; }
-.plan.p2 .w-c, .plan.p3 .w-c { transform: scaleY(0); }
-.plan.p3 .w-a { transform: scaleY(.55); }
-.plan .f { transform-box: view-box; transition: transform 1s cubic-bezier(.2,.8,.2,1); }
+.plan .walls .door { fill: var(--coal2); stroke: none; }
+.plan .f { transform-box: view-box; transition: transform 1s cubic-bezier(.2,.8,.2,1), opacity .6s; }
 .plan .f rect, .plan .f circle, .plan .f line { fill: rgba(27,26,23,.9); stroke: #F1EDE5; stroke-width: 1.6; }
 .plan .f circle:last-child { fill: var(--bronze); stroke: none; }
 .plan .plant circle:first-child { fill: rgba(191,211,200,.25); stroke: var(--mint); }
-.plan.p1 .sofa { transform: translate(250px, 184px); }
-.plan.p1 .table { transform: translate(400px, 86px); }
-.plan.p1 .bed { transform: translate(270px, 266px); }
-.plan.p1 .ward { transform: translate(50px, 376px); }
-.plan.p1 .kitch { transform: translate(520px, 46px); }
-.plan.p1 .desk { transform: translate(456px, 296px); }
-.plan.p1 .bath { transform: translate(60px, 60px); }
-.plan.p1 .plant { transform: translate(526px, 386px); }
-.plan.p2 .sofa { transform: translate(250px, 60px); }
-.plan.p2 .table { transform: translate(300px, 140px); }
-.plan.p2 .bed { transform: translate(260px, 266px); }
-.plan.p2 .ward { transform: translate(50px, 376px); }
-.plan.p2 .kitch { transform: translate(520px, 46px); }
-.plan.p2 .desk { transform: translate(556px, 290px) rotate(90deg); }
-.plan.p2 .bath { transform: translate(60px, 60px); }
-.plan.p2 .plant { transform: translate(186px, 266px); }
-.plan.p3 .sofa { transform: translate(250px, 196px) rotate(-90deg); }
-.plan.p3 .table { transform: translate(350px, 110px); }
-.plan.p3 .bed { transform: translate(430px, 266px); }
-.plan.p3 .ward { transform: translate(60px, 198px); }
-.plan.p3 .kitch { transform: translate(520px, 46px); }
-.plan.p3 .desk { transform: translate(300px, 420px) rotate(180deg); }
-.plan.p3 .bath { transform: translate(60px, 60px); }
-.plan.p3 .plant { transform: translate(50px, 266px); }
+.plan .w-k { transform-origin: 50% 0; }
+.plan .w-s { transform-origin: 50% 100%; }
+.plan.p1 .w-k, .plan.p1 .w-s { transform: scaleY(0); }
+.plan .swing path { fill: none; stroke: rgba(241,237,229,.4); stroke-width: 1.2; }
+.plan .fx rect, .plan .fx circle, .plan .fx ellipse { fill: rgba(27,26,23,.9); stroke: #F1EDE5; stroke-width: 1.6; }
+.plan .lbl text { font-family: inherit; font-size: 11px; letter-spacing: .05em; text-anchor: middle; fill: rgba(241,237,229,.55); transition: opacity .6s, transform 1s cubic-bezier(.2,.8,.2,1); transform-box: view-box; }
+.plan .kitch { transform: translate(42px, 48px); }
+.plan .sofa { transform: translate(380px, 60px); }
+.plan .ctable { transform: translate(410px, 140px); }
+.plan .tv { transform: translate(400px, 228px); }
+.plan .plant { transform: translate(526px, 60px); }
+.plan .table { transform: translate(130px, 120px); }
+.plan .island { transform: translate(110px, 172px); }
+.plan .bed { transform: translate(175px, 262px) scale(1, .9); }
+.plan .ward { transform: translate(78px, 262px) rotate(90deg) scale(1, 1); }
+.plan .ward2 { transform: translate(84px, 262px) scale(.36, 1); }
+.plan .desk { transform: translate(140px, 420px) rotate(180deg); }
+.plan .l-b { transform: translate(230px, 424px); }
+.plan .island, .plan .desk, .plan .ward2, .plan .l-kl, .plan .l-s, .plan .l-w { opacity: 0; }
+.plan.p1 .table { transform: translate(240px, 140px); }
+.plan.p1 .bed { transform: translate(120px, 262px) scale(1, .9); }
+.plan.p1 .l-b { transform: translate(175px, 424px); }
+.plan.p1 .island, .plan.p1 .l-kl, .plan.p2 .desk, .plan.p2 .l-s, .plan.p3 .ward2, .plan.p3 .l-w { opacity: 1; }
+.plan.p1 .l-k, .plan.p1 .l-l { opacity: 0; }
+.plan.p2 .ward { transform: translate(78px, 262px) rotate(90deg) scale(.6, 1); }
 .plan-ctl { display: flex; gap: 6px; margin-top: 14px; }
-.plan-ctl button { flex: 1 1 0; min-width: 0; display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 12px; border: 1px solid rgba(241,237,229,.16); border-radius: 14px 5px 14px 5px; background: transparent; color: var(--mute); cursor: pointer; font-size: 13px; transition: border-color .25s, color .25s, background .25s; }
+.plan-ctl button { flex: 1 1 0; min-width: 0; display: inline-flex; align-items: center; gap: 10px; min-height: 46px; padding: 6px 12px; border: 1px solid rgba(241,237,229,.16); border-radius: 14px 5px 14px 5px; background: transparent; color: var(--mute); cursor: pointer; font-size: 13px; transition: border-color .25s, color .25s, background .25s; }
 .plan-ctl button b { font-family: var(--fd); font-weight: 400; font-size: 20px; color: var(--bronze2); }
-.plan-ctl button span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.plan-ctl button span { line-height: 1.15; }
 .plan-ctl button.is-active { border-color: var(--bronze); color: var(--fg); background: rgba(168,135,90,.12); }
 
 /* ---------- каталожные секции ---------- */
@@ -421,6 +418,7 @@ body.menu-open .sticky { display: none; }
   .plan-ctl button { flex-direction: column; height: auto; padding: 8px 6px; gap: 2px; font-size: 12px; line-height: 1.2; }
   .plan-ctl button span { white-space: normal; text-align: center; }
   .plan-ctl button b { font-size: 18px; }
+  .plan .lbl text { font-size: 14px; letter-spacing: .02em; }
   .ph-tall { width: min(100%, 300px); }
   .svc-foot { gap: 14px; }
   .svc-foot .btn { width: 100%; }
