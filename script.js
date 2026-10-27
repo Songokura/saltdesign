@@ -309,19 +309,19 @@
   /* ---------- Язык: RU в разметке, EN здесь, KZ подгружается отдельным файлом ---------- */
   var I18N = { ru: {} };
   I18N.en = {
-    "meta.title": "Interior design and turnkey renovation in Astana - salt.design, designer Saltanat",
+    "meta.title": "Interior design and turnkey renovation in Astana\u00a0- salt.design, designer Saltanat",
     "meta.desc": "Design project with 3D visualisation from 15 000 ₸/m², working drawings from 5 000 ₸/m², turnkey renovation with a guarantee, designer supervision and full furnishing. Three layout options, instalments, free site visit in Astana.",
     "nav.design": "Design project", "nav.remont": "Renovation", "nav.kompl": "Furnishing", "nav.proj": "Projects", "nav.price": "Prices", "nav.kont": "Contacts", "nav.nadzor": "Supervision", "nav.about": "About",
     "tel.aria": "Call +7 701 998 28 09", "ig.aria": "salt.design on Instagram", "menu.aria": "Menu",
     "menu.note": "Astana, on-site work · Mon-Fri 9:00-18:00",
     "hero.kicker": "Astana · interior design · since 2024",
     "hero.t1": "Interior design", "hero.t2": "and turnkey renovation", "hero.t3": "in soft lines",
-    "hero.lead": "Three layout options to choose from, drawings for every trade, renovation with a guarantee and full furnishing. <span class=\"m-hide\">One person is responsible for everything - from the first measurement to the last vase.</span>",
+    "hero.lead": "Three layout options to choose from, drawings for every trade, renovation with a guarantee and full furnishing. <span class=\"m-hide\">One person is responsible for everything\u00a0- from the first measurement to the last vase.</span>",
     "hero.cta1": "Get a quote", "hero.cta2": "Services and prices", "hero.ig": "Projects and process on Instagram →",
     "band.1": "Design project", "band.2": "3D visualisation", "band.3": "Working drawings", "band.4": "Replanning", "band.5": "Turnkey renovation", "band.6": "Electrics and plumbing", "band.7": "Smart home", "band.8": "Designer supervision", "band.9": "Furnishing",
     "plan.1": "Kitchen-living room", "plan.2": "Study and bedroom", "plan.3": "Walk-in closet",
     "design.kicker": "Design project", "design.h": "Design project with&nbsp;3D visualisation",
-    "design.lead": "Three replanning and furniture layout options - you pick yours. Then photorealistic visualisation and working drawings for every trade.",
+    "design.lead": "Three replanning and furniture layout options\u00a0- you pick yours. Then photorealistic visualisation and working drawings for every trade.",
     "design.l1": "3 layout options to choose from", "design.l2": "Visualisation of every room", "design.l3": "Drawings for the electrician, plumber and tiler",
     "design.price": "from&nbsp;15&nbsp;000&nbsp;₸/m²", "btn.price": "Get a price",
     "remont.kicker": "Turnkey renovation", "remont.h": "Turnkey renovation with&nbsp;a guarantee",
@@ -345,12 +345,12 @@
     "lane.prev": "Previous", "lane.next": "Next", "pl.k": "Project visualisation",
     "proj.1": "Apartment", "proj.2": "Cottage", "proj.3": "Kitchen-living room", "proj.4": "Office", "proj.5": "Cafe", "proj.6": "Kids' room",
     "proj.ig": "More projects on Instagram", "proj.done": "Completed", "proj.wip": "In progress", "pt.g15": "Hallway with an ethnic accent", "pt.g27": "Bedroom", "pt.g23": "Marble bathroom", "pt.g46": "Living room", "pt.g25": "Walk-in wardrobe", "pt.g32": "Kitchen-dining room", "pt.g6": "Carved portal", "pt.g43": "Bedroom with a workspace", "pt.r5": "Kitchen with an island", "pt.r36": "Living room with a staircase", "pt.r13": "Dining room", "pt.r66": "Bedroom with ornament", "pt.r48": "Bathroom by the window", "pt.r17": "Hall", "pt.r28": "Living room", "pa.g15": "Hallway with a Kazakh chest and tus kiiz", "pa.g27": "Light bedroom with a chandelier and a soft headboard", "pa.g23": "Bathroom with a freestanding tub and marble walls", "pa.g46": "Living room with a velvet sofa", "pa.g25": "Walk-in wardrobe with glass fronts and lighting", "pa.g32": "Light kitchen-dining room with a chandelier", "pa.g6": "Dark blue carved portal between rooms, photo from the site", "pa.g43": "Bedroom with a desk by the window", "pa.r5": "Kitchen with a marble island and a crystal chandelier", "pa.r36": "Living and dining room with a staircase to the first floor", "pa.r13": "Dining room with a long table and two chandeliers", "pa.r66": "Bedroom with a rug with Kazakh ornament", "pa.r48": "Bathroom with a freestanding tub by the window", "pa.r17": "Hall with a stained glass door and a chandelier", "pa.r28": "Living room with green armchairs and a marble table", "draw.kicker": "Working drawings", "draw.h": "Drawings that builders follow without questions", "draw.lead": "Sheets from a real apartment project: every tradesman gets a drawing with dimensions and heights.", "dt.obmer": "Measured plan", "dt.montazh": "Partition layout", "dt.planirovka": "Floor plan with furniture", "dt.svet": "Lighting plan", "da.obmer": "Measured apartment plan with room areas", "da.montazh": "Partition layout plan with isometric views", "da.planirovka": "Floor plan with furniture layout", "da.svet": "Lighting and switch plan",
-    "why.kicker": "Why me", "why.h": "One person is responsible for&nbsp;everything", "why.lead": "From the first drawing to the last vase - no passing of responsibility between designer, foreman and store.",
+    "why.kicker": "Why me", "why.h": "One person is responsible for&nbsp;everything", "why.lead": "From the first drawing to the last vase\u00a0- no passing of responsibility between designer, foreman and store.",
     "why.alt": "Saltanat pointing at the concrete columns of a future living room",
-    "why.n1": "3", "why.t1": "layout options", "why.d1": "Replanning and furniture layout - you choose from three.",
+    "why.n1": "3", "why.t1": "layout options", "why.d1": "Replanning and furniture layout\u00a0- you choose from three.",
     "why.t2": "Guarantee on the renovation", "why.d2": "I answer for the result of the work, not just for the picture.",
     "why.t3": "Instalments", "why.d3": "The renovation and the project can be paid in parts.",
-    "why.t4": "Free site visit", "why.d4": "I come, look and calculate - with no obligation on your side.",
+    "why.t4": "Free site visit", "why.d4": "I come, look and calculate\u00a0- with no obligation on your side.",
     "price.kicker": "Prices", "price.h": "What a project costs", "price.lead": "I calculate the exact cost after a free site visit: area, condition of the property, scope of work.",
     "price.t1": "Working drawings", "price.p1": "from&nbsp;5&nbsp;000&nbsp;₸/m²", "price.d1": "Drawings for the trades: electrics, plumbing, partitions, ceilings, tiling.",
     "price.t2": "Design project with visualisation", "price.p2": "from&nbsp;15&nbsp;000&nbsp;₸/m²", "price.d2": "Three layout options, visualisation of every room and a full set of working drawings.",
@@ -369,7 +369,7 @@
     "form.h": "Request a site visit", "form.name": "Name", "form.name.ph": "How should I address you", "form.phone": "Phone", "form.err": "Enter a phone number of at least 10 digits.",
     "form.msg": "About the property", "form.msg.ph": "78 m² apartment, new build, need a design project and renovation", "form.btn": "Send via WhatsApp", "form.note": "The request opens in WhatsApp with a ready text. I reply personally.",
     "thanks.h": "Thank you!", "thanks.p": "The request has gone to WhatsApp. I will reply during working hours, Mon-Fri 9:00-18:00.",
-    "foot.tag": "Interior design and turnkey renovation, Astana", "foot.iin": "IIN 860916400857", "sticky.call": "Call"
+    "foot.tag": "Interior design and turnkey renovation, Astana", "sticky.call": "Call"
   };
   var RU = I18N.ru;
   var iEls = [].slice.call(doc.querySelectorAll("[data-i]"));

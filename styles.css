@@ -199,35 +199,35 @@ body.menu-open { overflow: hidden; }
 .plan .w-a { transform-origin: 50% 0; }
 .plan .w-c { transform-origin: 50% 0; }
 .plan.p2 .w-c, .plan.p3 .w-c { transform: scaleY(0); }
-.plan.p3 .w-a { transform: scaleY(.56); }
+.plan.p3 .w-a { transform: scaleY(.55); }
 .plan .f { transform-box: view-box; transition: transform 1s cubic-bezier(.2,.8,.2,1); }
 .plan .f rect, .plan .f circle, .plan .f line { fill: rgba(27,26,23,.9); stroke: #F1EDE5; stroke-width: 1.6; }
 .plan .f circle:last-child { fill: var(--bronze); stroke: none; }
 .plan .plant circle:first-child { fill: rgba(191,211,200,.25); stroke: var(--mint); }
-.plan.p1 .sofa { transform: translate(250px, 190px); }
-.plan.p1 .table { transform: translate(410px, 90px); }
-.plan.p1 .bed { transform: translate(270px, 265px); }
-.plan.p1 .ward { transform: translate(50px, 385px); }
-.plan.p1 .kitch { transform: translate(528px, 40px); }
-.plan.p1 .desk { transform: translate(450px, 300px); }
+.plan.p1 .sofa { transform: translate(250px, 184px); }
+.plan.p1 .table { transform: translate(400px, 86px); }
+.plan.p1 .bed { transform: translate(270px, 266px); }
+.plan.p1 .ward { transform: translate(50px, 376px); }
+.plan.p1 .kitch { transform: translate(520px, 46px); }
+.plan.p1 .desk { transform: translate(456px, 296px); }
 .plan.p1 .bath { transform: translate(60px, 60px); }
-.plan.p1 .plant { transform: translate(530px, 395px); }
+.plan.p1 .plant { transform: translate(526px, 386px); }
 .plan.p2 .sofa { transform: translate(250px, 60px); }
-.plan.p2 .table { transform: translate(300px, 150px); }
-.plan.p2 .bed { transform: translate(260px, 270px); }
-.plan.p2 .ward { transform: translate(50px, 385px); }
-.plan.p2 .kitch { transform: translate(528px, 40px); }
-.plan.p2 .desk { transform: translate(470px, 300px) rotate(90deg); }
+.plan.p2 .table { transform: translate(300px, 140px); }
+.plan.p2 .bed { transform: translate(260px, 266px); }
+.plan.p2 .ward { transform: translate(50px, 376px); }
+.plan.p2 .kitch { transform: translate(520px, 46px); }
+.plan.p2 .desk { transform: translate(556px, 290px) rotate(90deg); }
 .plan.p2 .bath { transform: translate(60px, 60px); }
-.plan.p2 .plant { transform: translate(190px, 390px); }
-.plan.p3 .sofa { transform: translate(260px, 150px) rotate(90deg); }
-.plan.p3 .table { transform: translate(370px, 120px); }
-.plan.p3 .bed { transform: translate(430px, 270px); }
-.plan.p3 .ward { transform: translate(50px, 300px) rotate(90deg); }
-.plan.p3 .kitch { transform: translate(330px, 40px) rotate(90deg); }
-.plan.p3 .desk { transform: translate(250px, 380px); }
+.plan.p2 .plant { transform: translate(186px, 266px); }
+.plan.p3 .sofa { transform: translate(250px, 196px) rotate(-90deg); }
+.plan.p3 .table { transform: translate(350px, 110px); }
+.plan.p3 .bed { transform: translate(430px, 266px); }
+.plan.p3 .ward { transform: translate(60px, 198px); }
+.plan.p3 .kitch { transform: translate(520px, 46px); }
+.plan.p3 .desk { transform: translate(300px, 420px) rotate(180deg); }
 .plan.p3 .bath { transform: translate(60px, 60px); }
-.plan.p3 .plant { transform: translate(530px, 60px); }
+.plan.p3 .plant { transform: translate(50px, 266px); }
 .plan-ctl { display: flex; gap: 6px; margin-top: 14px; }
 .plan-ctl button { flex: 1 1 0; min-width: 0; display: inline-flex; align-items: center; gap: 10px; height: 46px; padding: 0 12px; border: 1px solid rgba(241,237,229,.16); border-radius: 14px 5px 14px 5px; background: transparent; color: var(--mute); cursor: pointer; font-size: 13px; transition: border-color .25s, color .25s, background .25s; }
 .plan-ctl button b { font-family: var(--fd); font-weight: 400; font-size: 20px; color: var(--bronze2); }
@@ -238,6 +238,7 @@ body.menu-open { overflow: hidden; }
 .sec { position: relative; padding: 96px 0; overflow: clip; }
 .sec-dark { background: var(--ink); color: var(--fg); }
 .sec-light { --bg: var(--lime); --fg: var(--txt); --mute: var(--txt2); --line: rgba(111,86,53,.5); background: var(--bg); color: var(--fg); }
+.sec-light > .wrap { position: relative; z-index: 1; }
 .sec-light::before { content: ""; position: absolute; width: 64vmin; height: 64vmin; border: 1px solid rgba(111,86,53,.14); border-radius: 32vmin 0 32vmin 0; right: -20vmin; top: 40px; pointer-events: none; }
 .sec-light .kicker { color: var(--bronze-deep); }
 .sec-light .ph { background: var(--lime2); }
@@ -293,7 +294,7 @@ body.menu-open { overflow: hidden; }
 
 /* бенто */
 .bento { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 3.5fr) minmax(0, 3.5fr); gap: 16px; }
-.cell { background: rgba(255,255,255,.55); border: 1px solid rgba(111,86,53,.16); border-radius: var(--rl) 6px var(--rl) 6px; padding: 28px; display: flex; flex-direction: column; min-height: 200px; }
+.cell { background: color-mix(in srgb, #fff 55%, var(--lime)); border: 1px solid rgba(111,86,53,.16); border-radius: var(--rl) 6px var(--rl) 6px; padding: 28px; display: flex; flex-direction: column; min-height: 200px; }
 .cell h3 { font-family: var(--fd); font-weight: 400; font-size: 24px; line-height: 1.1; margin-top: auto; }
 .cell p { margin-top: 10px; color: var(--txt2); font-size: 15px; }
 .cell-n { font-family: var(--fd); font-size: 64px; line-height: .9; color: var(--bronze-deep); }
