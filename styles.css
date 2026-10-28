@@ -126,7 +126,7 @@ body.menu-open { overflow: hidden; }
 .hero { --soft: 0; --grow: 0; }
 .win {
   position: absolute; z-index: 1; overflow: hidden; background: var(--coal);
-  top: calc(24px * (1 - var(--grow))); right: calc(24px * (1 - var(--grow))); bottom: calc(24px * (1 - var(--grow))); left: calc(54% * (1 - var(--grow)));
+  top: calc(24px * (1 - var(--grow))); right: calc(24px * (1 - var(--grow))); bottom: calc((var(--hdr) + 24px) * (1 - var(--grow))); left: calc(54% * (1 - var(--grow)));
   border-radius: var(--rw) 0 0 0;
   --rw: calc(26vmin * var(--soft) * (1 - var(--grow)));
 }
@@ -573,3 +573,12 @@ body.menu-open .sticky { display: none; }
   .why-real figure:first-child { grid-column: 1 / -1; }
   .why-real figure:first-child img { aspect-ratio: 4 / 3; }
 }
+
+/* герой: в экран на телефоне, кикер читается (28.10.2026) */
+@media (max-width: 760px) {
+  .pw-hero, .pw-hero .plate { min-height: calc(100svh - var(--hdr)); }
+  .hero-txt { padding: 18svh 0 26px; }
+  .hero .kicker { color: #E2C9A0; text-shadow: 0 1px 12px rgba(0,0,0,.5); }
+  .hero .lead { color: rgba(241,237,229,.88); }
+}
+@media (max-width: 760px) and (max-height: 700px) { .hero-txt { padding: 12svh 0 20px; } }
