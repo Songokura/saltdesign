@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;1,400&family=Onest:wght@300;400;500;600&display=swap">
 <link rel="preload" as="image" href="assets/hero-int.webp" media="(min-width:761px)" fetchpriority="high">
 <link rel="preload" as="image" href="assets/hero-int-m.webp" media="(max-width:760px)" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=20261028-6">
+<link rel="stylesheet" href="styles.css?v=20261028-7">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -246,12 +246,12 @@
           <a class="btn btn-bronze" href="https://wa.me/77019982809" data-wa="remont" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-wa"/></svg><span data-i="btn.price">Узнать цену</span></a>
         </div>
       </div>
-      <div class="media">
-        <div class="ph vid">
+      <div class="media media-bleed">
+        <figure class="bleed"><img src="assets/plate-remont.webp" alt="Реализованная ванная: мрамор, отдельностоящая ванна и подсветка" data-i-alt="remont.alt2" width="1040" height="1600" loading="lazy" decoding="async"><figcaption class="cap" data-i="remont.cap2">Реализованный проект: ванная в мраморе</figcaption></figure>
+        <div class="ph vid inset">
           <img src="assets/video/remont-poster.webp" alt="Салтанат с подрядчиками на объекте: мятные стены под отделку и паркет ёлочкой" data-i-alt="remont.alt" width="480" height="854" loading="lazy" decoding="async">
           <video class="loop" data-src="assets/video/remont2.mp4" muted playsinline loop preload="none" aria-hidden="true"></video>
           <span class="ph-line"></span>
-          <p class="cap" data-i="remont.cap">Объект в Астане: чистовая отделка</p>
         </div>
       </div>
     </div>
@@ -262,12 +262,8 @@
 <div class="pw pw-svc" id="komplektaciya">
   <section class="plate svc media-left" aria-labelledby="h-kompl">
     <div class="svc-in">
-      <div class="media">
-        <div class="ph">
-          <img src="assets/kompl.webp" alt="Столовая с хрустальной люстрой, мебель и освещение подобраны в проект" data-i-alt="kompl.alt" width="990" height="1400" loading="lazy" decoding="async">
-          <span class="ph-line"></span>
-          <p class="cap" data-i="kompl.cap">Столовая: мебель, освещение и декор подобраны в проект</p>
-        </div>
+      <div class="media media-bleed">
+        <figure class="bleed"><img src="assets/plate-kompl.webp" alt="Кресло, ТВ-зона и декор, подобранные в проект" data-i-alt="kompl.alt" width="1120" height="1400" loading="lazy" decoding="async"><figcaption class="cap" data-i="kompl.cap">Гостиная: мебель, освещение и декор подобраны в проект</figcaption></figure>
       </div>
       <div class="txt">
         <p class="kicker" data-i="kompl.kicker">Комплектация</p>
@@ -301,21 +297,34 @@
       <li><b>03</b><h3 data-i="smeta.t3">Выбор из вариантов</h3><p data-i="smeta.d3">Два варианта комплектации с итоговой суммой. Утверждаете вы, до заказа.</p></li>
       <li><b>04</b><h3 data-i="smeta.t4">Прозрачный закуп</h3><p data-i="smeta.d4">Заказываю у проверенных поставщиков, принимаю и расставляю на объекте.</p></li>
     </ol>
+    <div class="mbx rv">
+      <div class="mb-tabs" role="tablist" aria-label="Санузлы">
+        <button type="button" class="is-active" role="tab" aria-selected="true" aria-controls="mbp1" data-mb="1"><span data-i="mb.r1">Гостевой санузел</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="mbp2" data-mb="2"><span data-i="mb.r2">Мужской санузел</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="mbp3" data-mb="3"><span data-i="mb.r3">Мастер-санузел</span></button>
+      </div>
+      <div class="mb-pair" id="mbp1" role="tabpanel">
+        <figure class="mb-card"><a href="assets/kompl/mb1.webp" target="_blank" rel="noopener"><img src="assets/kompl/mb1.webp" alt="Мудборд: гостевой санузел, вариант 1, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.1" width="1000" height="800" loading="lazy" decoding="async"></a><figcaption><span data-i="mb.v1">Вариант 1</span><b>2&nbsp;068&nbsp;227&nbsp;₸</b></figcaption></figure>
+        <figure class="mb-card"><a href="assets/kompl/mb2.webp" target="_blank" rel="noopener"><img src="assets/kompl/mb2.webp" alt="Мудборд: гостевой санузел, вариант 2, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.2" width="1000" height="800" loading="lazy" decoding="async"></a><figcaption><span data-i="mb.v2">Вариант 2</span><b>2&nbsp;287&nbsp;054&nbsp;₸</b></figcaption></figure>
+      </div>
+      <div class="mb-pair" id="mbp2" role="tabpanel" hidden>
+        <figure class="mb-card"><a href="assets/kompl/mb3.webp" target="_blank" rel="noopener"><img src="assets/kompl/mb3.webp" alt="Мудборд: мужской санузел, вариант 1, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.3" width="1000" height="800" loading="lazy" decoding="async"></a><figcaption><span data-i="mb.v1">Вариант 1</span><b>1&nbsp;423&nbsp;163&nbsp;₸</b></figcaption></figure>
+        <figure class="mb-card"><a href="assets/kompl/mb4.webp" target="_blank" rel="noopener"><img src="assets/kompl/mb4.webp" alt="Мудборд: мужской санузел, вариант 2, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.4" width="1000" height="800" loading="lazy" decoding="async"></a><figcaption><span data-i="mb.v2">Вариант 2</span><b>1&nbsp;558&nbsp;825&nbsp;₸</b></figcaption></figure>
+      </div>
+      <div class="mb-pair" id="mbp3" role="tabpanel" hidden>
+        <figure class="mb-card"><a href="assets/kompl/mb5.webp" target="_blank" rel="noopener"><img src="assets/kompl/mb5.webp" alt="Мудборд: мастер-санузел, вариант 1, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.5" width="1000" height="800" loading="lazy" decoding="async"></a><figcaption><span data-i="mb.v1">Вариант 1</span><b>2&nbsp;415&nbsp;945&nbsp;₸</b></figcaption></figure>
+        <figure class="mb-card"><a href="assets/kompl/mb6.webp" target="_blank" rel="noopener"><img src="assets/kompl/mb6.webp" alt="Мудборд: мастер-санузел, вариант 2, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.6" width="1000" height="800" loading="lazy" decoding="async"></a><figcaption><span data-i="mb.v2">Вариант 2</span><b>2&nbsp;261&nbsp;329&nbsp;₸</b></figcaption></figure>
+      </div>
+    </div>
+    <p class="sub-kicker rv" data-i="kp.h">Подобрано в проекты</p>
     <div class="lane-wrap rv">
       <button class="lane-btn prev" type="button" aria-label="Назад" data-i-aria="lane.prev"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#ic-arr"/></svg></button>
       <button class="lane-btn next" type="button" aria-label="Вперёд" data-i-aria="lane.next"><svg aria-hidden="true"><use href="#ic-arr"/></svg></button>
-      <ul class="lane" tabindex="0" aria-label="Мудборды и подбор в проект" data-i-aria="kp.aria">
-        <li class="proj mb has-img"><a href="assets/kompl/mb1.webp" target="_blank" rel="noopener"><img class="proj-img" src="assets/kompl/mb1.webp" alt="Мудборд: гостевой санузел, вариант 1, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.1" width="1000" height="800" loading="lazy" decoding="async"></a><p class="proj-cap"><span class="proj-tag"><span data-i="mb.tag">Мудборд</span> · 2&nbsp;068&nbsp;227&nbsp;₸</span><span class="proj-t" data-i="mb.1">Гостевой санузел, вариант 1</span></p></li>
-        <li class="proj mb has-img"><a href="assets/kompl/mb2.webp" target="_blank" rel="noopener"><img class="proj-img" src="assets/kompl/mb2.webp" alt="Мудборд: гостевой санузел, вариант 2, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.2" width="1000" height="800" loading="lazy" decoding="async"></a><p class="proj-cap"><span class="proj-tag"><span data-i="mb.tag">Мудборд</span> · 2&nbsp;287&nbsp;054&nbsp;₸</span><span class="proj-t" data-i="mb.2">Гостевой санузел, вариант 2</span></p></li>
-        <li class="proj mb has-img"><a href="assets/kompl/mb3.webp" target="_blank" rel="noopener"><img class="proj-img" src="assets/kompl/mb3.webp" alt="Мудборд: мужской санузел, вариант 1, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.3" width="1000" height="800" loading="lazy" decoding="async"></a><p class="proj-cap"><span class="proj-tag"><span data-i="mb.tag">Мудборд</span> · 1&nbsp;423&nbsp;163&nbsp;₸</span><span class="proj-t" data-i="mb.3">Мужской санузел, вариант 1</span></p></li>
-        <li class="proj mb has-img"><a href="assets/kompl/mb4.webp" target="_blank" rel="noopener"><img class="proj-img" src="assets/kompl/mb4.webp" alt="Мудборд: мужской санузел, вариант 2, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.4" width="1000" height="800" loading="lazy" decoding="async"></a><p class="proj-cap"><span class="proj-tag"><span data-i="mb.tag">Мудборд</span> · 1&nbsp;558&nbsp;825&nbsp;₸</span><span class="proj-t" data-i="mb.4">Мужской санузел, вариант 2</span></p></li>
-        <li class="proj mb has-img"><a href="assets/kompl/mb5.webp" target="_blank" rel="noopener"><img class="proj-img" src="assets/kompl/mb5.webp" alt="Мудборд: мастер-санузел, вариант 1, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.5" width="1000" height="800" loading="lazy" decoding="async"></a><p class="proj-cap"><span class="proj-tag"><span data-i="mb.tag">Мудборд</span> · 2&nbsp;415&nbsp;945&nbsp;₸</span><span class="proj-t" data-i="mb.5">Мастер-санузел, вариант 1</span></p></li>
-        <li class="proj mb has-img"><a href="assets/kompl/mb6.webp" target="_blank" rel="noopener"><img class="proj-img" src="assets/kompl/mb6.webp" alt="Мудборд: мастер-санузел, вариант 2, сантехника и цвета с ценой каждой позиции" data-i-alt="mba.6" width="1000" height="800" loading="lazy" decoding="async"></a><p class="proj-cap"><span class="proj-tag"><span data-i="mb.tag">Мудборд</span> · 2&nbsp;261&nbsp;329&nbsp;₸</span><span class="proj-t" data-i="mb.6">Мастер-санузел, вариант 2</span></p></li>
+      <ul class="lane" tabindex="0" aria-label="Подбор в проект" data-i-aria="kp.aria">
         <li class="proj has-img"><img class="proj-img" src="assets/kompl/k-vanity.webp" alt="Розовая тумба с латунными ручками, зеркало в раме и бра" data-i-alt="ka.vanity" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="kp.tag">Подбор в проект</span><span class="proj-t" data-i="kt.vanity">Тумба и бра в санузле</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/kompl/k-wc.webp" alt="Пудровые фасады, мраморная ниша и стеклянная люстра в санузле" data-i-alt="ka.wc" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="kp.tag">Подбор в проект</span><span class="proj-t" data-i="kt.wc">Санузел: фасады и люстра</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/kompl/k-bath.webp" alt="Отдельностоящая ванна у окна с латунным смесителем" data-i-alt="ka.bath" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="kp.tag">Подбор в проект</span><span class="proj-t" data-i="kt.bath">Ванна у окна</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/kompl/k-bath2.webp" alt="Санузел с ванной, тумбой и люстрой из стеклянных подвесов" data-i-alt="ka.bath2" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="kp.tag">Подбор в проект</span><span class="proj-t" data-i="kt.bath2">Санузел с ванной</span></p></li>
-        <li class="proj has-img"><img class="proj-img" src="assets/kompl/k-armchair.webp" alt="Зелёное кресло с деревянной рамой у окна" data-i-alt="ka.armchair" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="kp.tag">Подбор в проект</span><span class="proj-t" data-i="kt.armchair">Кресло в гостиной</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/kompl/k-tvwall.webp" alt="ТВ-стена из дерева с полками и подсветкой" data-i-alt="ka.tvwall" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="kp.tag">Подбор в проект</span><span class="proj-t" data-i="kt.tvwall">ТВ-зона</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/kompl/k-ctable.webp" alt="Круглый столик с мраморной столешницей у кожаного дивана" data-i-alt="ka.ctable" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="kp.tag">Подбор в проект</span><span class="proj-t" data-i="kt.ctable">Журнальный столик</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/kompl/k-desk.webp" alt="Стол у окна, стеллаж и настольная лампа" data-i-alt="ka.desk" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="kp.tag">Подбор в проект</span><span class="proj-t" data-i="kt.desk">Рабочее место у окна</span></p></li>
@@ -395,13 +404,10 @@
       <h2 class="h-display" id="h-proj" data-i="proj.h">Реализованные и текущие проекты</h2>
       <p class="lead" data-i="proj.lead">Квартиры и дома: от этно-акцентов до классики. Живой процесс с объектов&nbsp;- в Instagram.</p>
     </div>
-    <div class="lane-wrap rv">
-      <button class="lane-btn prev" type="button" aria-label="Назад" data-i-aria="lane.prev"><svg aria-hidden="true" style="transform:scaleX(-1)"><use href="#ic-arr"/></svg></button>
-      <button class="lane-btn next" type="button" aria-label="Вперёд" data-i-aria="lane.next"><svg aria-hidden="true"><use href="#ic-arr"/></svg></button>
-      <ul class="lane" id="lane" tabindex="0" aria-label="Проекты">
+    <div class="gal-wrap rv">
+      <ul class="gal" id="gal" aria-label="Проекты">
         <li class="proj has-img"><img class="proj-img" src="assets/proj/g15.webp" alt="Прихожая с казахским сундуком и тускиизом" data-i-alt="pa.g15" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="proj.done">Реализован</span><span class="proj-t" data-i="pt.g15">Прихожая с этно-акцентом</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/proj/g27.webp" alt="Светлая спальня с люстрой и мягким изголовьем" data-i-alt="pa.g27" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="proj.done">Реализован</span><span class="proj-t" data-i="pt.g27">Спальня</span></p></li>
-        <li class="proj has-img"><img class="proj-img" src="assets/proj/g23.webp" alt="Ванная с отдельностоящей ванной и мраморными стенами" data-i-alt="pa.g23" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="proj.done">Реализован</span><span class="proj-t" data-i="pt.g23">Ванная в мраморе</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/proj/g46.webp" alt="Гостиная с бархатным диваном" data-i-alt="pa.g46" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="proj.done">Реализован</span><span class="proj-t" data-i="pt.g46">Гостиная</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/proj/g25.webp" alt="Гардеробная со стеклянными фасадами и подсветкой" data-i-alt="pa.g25" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="proj.done">Реализован</span><span class="proj-t" data-i="pt.g25">Гардеробная</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/proj/g32.webp" alt="Светлая кухня-столовая с люстрой" data-i-alt="pa.g32" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag" data-i="proj.done">Реализован</span><span class="proj-t" data-i="pt.g32">Кухня-столовая</span></p></li>
@@ -417,6 +423,7 @@
         <li class="proj has-img"><img class="proj-img" src="assets/proj/r17.webp" alt="Холл с витражной дверью и люстрой" data-i-alt="pa.r17" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag wip" data-i="proj.wip">В работе</span><span class="proj-t" data-i="pt.r17">Холл</span></p></li>
         <li class="proj has-img"><img class="proj-img" src="assets/proj/r28.webp" alt="Гостиная с зелёными креслами и мраморным столиком" data-i-alt="pa.r28" width="720" height="900" loading="lazy" decoding="async"><p class="proj-cap"><span class="proj-tag wip" data-i="proj.wip">В работе</span><span class="proj-t" data-i="pt.r28">Гостиная</span></p></li>
       </ul>
+      <button class="btn btn-ghost gal-more" type="button" id="galMore"><span data-i="proj.more">Показать все проекты</span></button>
     </div>
     <div class="lane-foot rv">
       <a class="btn btn-ghost" href="https://www.instagram.com/salt.design_/" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-ig"/></svg><span data-i="proj.ig">Больше объектов в Instagram</span></a>
@@ -575,6 +582,6 @@
   <a class="st-ig" href="https://www.instagram.com/salt.design_/" target="_blank" rel="noopener" aria-label="Instagram salt.design" data-i-aria="ig.aria"><svg aria-hidden="true"><use href="#ic-ig"/></svg></a>
 </nav>
 
-<script src="script.js?v=20261028-6" defer></script>
+<script src="script.js?v=20261028-7" defer></script>
 </body>
 </html>

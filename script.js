@@ -280,6 +280,38 @@
     }, { threshold: 0.4 }).observe(plan);
   }
 
+  /* ---------- Галерея проектов: крупные кадры и «показать все» ---------- */
+  var gal = doc.getElementById("gal"), galMore = doc.getElementById("galMore");
+  function galLayout() {
+    if (!gal) return;
+    var all = gal.classList.contains("all"), i = 0;
+    [].forEach.call(gal.children, function (li) {
+      li.classList.remove("big", "rest");
+      if (getComputedStyle(li).display === "none") return;
+      if (i === 0 || i === 10) li.classList.add("big");
+      if (!all && i >= 9) li.classList.add("rest");
+      i++;
+    });
+    if (galMore) galMore.hidden = all || i <= 9;
+  }
+  if (gal) {
+    galLayout();
+    W.addEventListener("resize", galLayout);
+    if (galMore) galMore.addEventListener("click", function () { gal.classList.add("all"); galLayout(); });
+  }
+
+  /* ---------- Мудборды: вкладки по санузлам ---------- */
+  var mbTabs = [].slice.call(doc.querySelectorAll(".mb-tabs button"));
+  mbTabs.forEach(function (b) {
+    b.addEventListener("click", function () {
+      mbTabs.forEach(function (x) {
+        var on = x === b, panel = doc.getElementById("mbp" + x.getAttribute("data-mb"));
+        x.classList.toggle("is-active", on); x.setAttribute("aria-selected", on ? "true" : "false");
+        if (panel) panel.hidden = !on;
+      });
+    });
+  });
+
   /* ---------- Ленты (проекты, комплектация): стрелки шагом в одну карточку ---------- */
   var laneFns = [];
   function laneState() { laneFns.forEach(function (f) { f(); }); }
@@ -329,7 +361,7 @@
     "kompl.kicker": "Furnishing", "kompl.h": "Full furnishing and procurement",
     "kompl.lead": "Cabinet and upholstered furniture, lighting, plumbing fixtures, textiles and decor. I select them to the project and budget, order, receive and arrange\u00a0- you get a finished interior, not a shopping list.",
     "kompl.l1": "Estimate and mood board for every room", "kompl.l2": "Ordering and delivery control", "kompl.l3": "Receiving, arranging, styling",
-    "kompl.price": "priced by project scope", "kompl.alt": "Dining room with a crystal chandelier, furniture and lighting selected for the project", "kompl.cap": "Dining room: furniture, lighting and decor selected for the project",
+    "kompl.price": "priced by project scope", "kompl.alt": "Armchair, TV area and decor selected for the project", "kompl.cap": "Living room: furniture, lighting and decor selected for the project",
     "nadzor.kicker": "Designer supervision", "nadzor.h": "Designer supervision on&nbsp;site",
     "nadzor.lead": "I control how the project is carried out at every stage: from engineering systems to finishing. No compromise on quality and no \"who cares what's behind the walls\".",
     "nadzor.l1": "Coordinating all specialists", "nadzor.l2": "Checking technical solutions", "nadzor.l3": "Drawings followed precisely",
@@ -420,7 +452,16 @@
     "kt.bench": "Bench in the hallway",
     "ka.bench": "Bench with floral upholstery and a burgundy radiator",
     "kt.kitchen": "Dining table in the kitchen",
-    "ka.kitchen": "Wooden table and upholstered chairs in the kitchen"
+    "ka.kitchen": "Wooden table and upholstered chairs in the kitchen",
+    "remont.alt2": "Completed bathroom: marble, freestanding tub and lighting",
+    "remont.cap2": "Completed project: marble bathroom",
+    "mb.r1": "Guest bathroom",
+    "mb.r2": "Men's bathroom",
+    "mb.r3": "Master bathroom",
+    "mb.v1": "Option 1",
+    "mb.v2": "Option 2",
+    "kp.h": "Selected for projects",
+    "proj.more": "Show all projects"
   };
   var RU = I18N.ru;
   var iEls = [].slice.call(doc.querySelectorAll("[data-i]"));
