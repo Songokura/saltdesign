@@ -288,11 +288,11 @@
     [].forEach.call(gal.children, function (li) {
       li.classList.remove("big", "rest");
       if (getComputedStyle(li).display === "none") return;
-      if (i === 0 || i === 10) li.classList.add("big");
-      if (!all && i >= 9) li.classList.add("rest");
+      if (i === 0 || i === 9) li.classList.add("big");
+      if (!all && i >= 7) li.classList.add("rest");
       i++;
     });
-    if (galMore) galMore.hidden = all || i <= 9;
+    if (galMore) galMore.hidden = all || i <= 7;
   }
   if (gal) {
     galLayout();
