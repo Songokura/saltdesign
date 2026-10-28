@@ -304,9 +304,6 @@
     laneFns.push(st); st();
   });
 
-  /* ---------- Бегущая лента героя: вторая копия для бесшовного цикла ---------- */
-  var bandT = doc.getElementById("bandT");
-  if (bandT) bandT.innerHTML += bandT.innerHTML;
 
   /* ---------- Язык: RU в разметке, EN здесь, KZ подгружается отдельным файлом ---------- */
   var I18N = { ru: {} };
@@ -320,7 +317,6 @@
     "hero.t1": "Interior design", "hero.t2": "and turnkey renovation", "hero.t3": "in soft lines",
     "hero.lead": "Three layout options to choose from, drawings for every trade, renovation with a guarantee and full furnishing. <span class=\"m-hide\">One person is responsible for everything\u00a0- from the first measurement to the last vase.</span>",
     "hero.cta1": "Get a quote", "hero.cta2": "Services and prices", "hero.ig": "Projects and process on Instagram →",
-    "band.1": "Design project", "band.2": "3D visualisation", "band.3": "Working drawings", "band.4": "Replanning", "band.5": "Turnkey renovation", "band.6": "Electrics and plumbing", "band.7": "Smart home", "band.8": "Designer supervision", "band.9": "Furnishing",
     "plan.1": "Kitchen-living room", "plan.2": "Study and bedroom", "plan.3": "Walk-in closet", "room.k": "Kitchen", "room.l": "Living room", "room.kl": "Kitchen-living room", "room.b": "Bedroom", "room.s": "Study", "room.w": "Wardrobe", "room.c": "Bathroom",
     "design.kicker": "Design project", "design.h": "Design project with&nbsp;3D visualisation",
     "design.lead": "Three replanning and furniture layout options\u00a0- you pick yours. Then photorealistic visualisation and working drawings for every trade.",
