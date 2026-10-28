@@ -280,27 +280,29 @@
     }, { threshold: 0.4 }).observe(plan);
   }
 
-  /* ---------- Лента проектов: стрелки шагом в одну карточку ---------- */
-  var lane = doc.getElementById("lane"), lPrev = doc.querySelector(".lane-btn.prev"), lNext = doc.querySelector(".lane-btn.next");
-  function laneStep() {
-    var card = lane && lane.firstElementChild; if (!card) return 320;
-    var gap = parseFloat(getComputedStyle(lane).columnGap || getComputedStyle(lane).gap) || 0;
-    return card.getBoundingClientRect().width + gap;
-  }
-  function laneState() {
+  /* ---------- Ленты (проекты, комплектация): стрелки шагом в одну карточку ---------- */
+  var laneFns = [];
+  function laneState() { laneFns.forEach(function (f) { f(); }); }
+  [].forEach.call(doc.querySelectorAll(".lane-wrap"), function (wrap) {
+    var lane = wrap.querySelector(".lane"), lPrev = wrap.querySelector(".lane-btn.prev"), lNext = wrap.querySelector(".lane-btn.next");
     if (!lane || !lPrev || !lNext) return;
-    var max = lane.scrollWidth - lane.clientWidth;
-    var none = max <= 1;
-    lPrev.hidden = none; lNext.hidden = none;
-    lPrev.disabled = lane.scrollLeft <= 8;
-    lNext.disabled = lane.scrollLeft >= max - 8;
-  }
-  if (lane) {
+    function laneStep() {
+      var card = [].filter.call(lane.children, function (c) { return c.offsetWidth > 0; })[0]; if (!card) return 320;
+      var gap = parseFloat(getComputedStyle(lane).columnGap || getComputedStyle(lane).gap) || 0;
+      return card.getBoundingClientRect().width + gap;
+    }
+    function st() {
+      var max = lane.scrollWidth - lane.clientWidth;
+      var none = max <= 1;
+      lPrev.hidden = none; lNext.hidden = none;
+      lPrev.disabled = lane.scrollLeft <= 8;
+      lNext.disabled = lane.scrollLeft >= max - 8;
+    }
     lPrev.addEventListener("click", function () { lane.scrollBy({ left: -laneStep(), behavior: REDUCED ? "auto" : "smooth" }); });
     lNext.addEventListener("click", function () { lane.scrollBy({ left: laneStep(), behavior: REDUCED ? "auto" : "smooth" }); });
-    lane.addEventListener("scroll", function () { requestAnimationFrame(laneState); }, { passive: true });
-    laneState();
-  }
+    lane.addEventListener("scroll", function () { requestAnimationFrame(st); }, { passive: true });
+    laneFns.push(st); st();
+  });
 
   /* ---------- Бегущая лента героя: вторая копия для бесшовного цикла ---------- */
   var bandT = doc.getElementById("bandT");
@@ -310,11 +312,11 @@
   var I18N = { ru: {} };
   I18N.en = {
     "meta.title": "Interior design and turnkey renovation in Astana\u00a0- salt.design, designer Saltanat",
-    "meta.desc": "Design project with 3D visualisation from 15 000 ₸/m², working drawings from 5 000 ₸/m², turnkey renovation with a guarantee, designer supervision and full furnishing. Three layout options, instalments, free site visit in Astana.",
+    "meta.desc": "Design project with 3D visualisation from 15 000 ₸/m², working drawings from 5 000 ₸/m², turnkey renovation with a guarantee, designer supervision and full furnishing. Three layout options, staged payment for the design project, site visits in Astana.",
     "nav.design": "Design project", "nav.remont": "Renovation", "nav.kompl": "Furnishing", "nav.proj": "Projects", "nav.price": "Prices", "nav.kont": "Contacts", "nav.nadzor": "Supervision", "nav.about": "About",
     "tel.aria": "Call +7 701 998 28 09", "ig.aria": "salt.design on Instagram", "menu.aria": "Menu",
     "menu.note": "Astana, on-site work · Mon-Fri 9:00-18:00",
-    "hero.kicker": "Astana · interior design · since 2024",
+    "hero.kicker": "Astana · interior design · since 2022",
     "hero.t1": "Interior design", "hero.t2": "and turnkey renovation", "hero.t3": "in soft lines",
     "hero.lead": "Three layout options to choose from, drawings for every trade, renovation with a guarantee and full furnishing. <span class=\"m-hide\">One person is responsible for everything\u00a0- from the first measurement to the last vase.</span>",
     "hero.cta1": "Get a quote", "hero.cta2": "Services and prices", "hero.ig": "Projects and process on Instagram →",
@@ -322,19 +324,19 @@
     "plan.1": "Kitchen-living room", "plan.2": "Study and bedroom", "plan.3": "Walk-in closet", "room.k": "Kitchen", "room.l": "Living room", "room.kl": "Kitchen-living room", "room.b": "Bedroom", "room.s": "Study", "room.w": "Wardrobe", "room.c": "Bathroom",
     "design.kicker": "Design project", "design.h": "Design project with&nbsp;3D visualisation",
     "design.lead": "Three replanning and furniture layout options\u00a0- you pick yours. Then photorealistic visualisation and working drawings for every trade.",
-    "design.l1": "3 layout options to choose from", "design.l2": "Visualisation of every room", "design.l3": "Drawings for the electrician, plumber and tiler",
+    "design.l1": "Three layout options to choose from", "design.l2": "Visualisation of every room", "design.l3": "Drawings for the electrician, plumber and tiler",
     "design.price": "from&nbsp;15&nbsp;000&nbsp;₸/m²", "btn.price": "Get a price",
     "remont.kicker": "Turnkey renovation", "remont.h": "Turnkey renovation with&nbsp;a guarantee",
-    "remont.lead": "Demolition, replanning, electrics, plumbing, smart home and finishing. Contractors I have tested on my own sites.",
-    "remont.l1": "Guarantee on the renovation", "remont.l2": "Instalments", "remont.l3": "Replanning, electrics, plumbing, smart home",
-    "remont.price": "estimate after a free site visit", "remont.alt": "Saltanat with contractors on site: mint walls ready for finishing and herringbone parquet", "remont.cap": "Site in Astana: finishing stage",
+    "remont.lead": "Every stage from demolition to finishing\u00a0- with trusted contractors and suppliers.",
+    "remont.l1": "Demolition, installation, replanning, masonry plan", "remont.l2": "Plumbing, heating, manifold units", "remont.l3": "Electrics, smart home, ventilation, heat recovery, air conditioning",
+    "remont.price": "estimate after a site visit", "remont.alt": "Saltanat with contractors on site: mint walls ready for finishing and herringbone parquet", "remont.cap": "Site in Astana: finishing stage",
     "kompl.kicker": "Furnishing", "kompl.h": "Full furnishing and procurement",
-    "kompl.lead": "Furniture, lighting, plumbing fixtures, textiles and decor: I select them to the project and budget, order, receive and arrange. You get a finished interior, not a shopping list.",
-    "kompl.l1": "Selection to the project and budget", "kompl.l2": "Ordering and delivery control", "kompl.l3": "Receiving, arranging, styling",
+    "kompl.lead": "Cabinet and upholstered furniture, lighting, plumbing fixtures, textiles and decor. I select them to the project and budget, order, receive and arrange\u00a0- you get a finished interior, not a shopping list.",
+    "kompl.l1": "Estimate and mood board for every room", "kompl.l2": "Ordering and delivery control", "kompl.l3": "Receiving, arranging, styling",
     "kompl.price": "priced by project scope", "kompl.alt": "Dining room with a crystal chandelier, furniture and lighting selected for the project", "kompl.cap": "Dining room: furniture, lighting and decor selected for the project",
     "nadzor.kicker": "Designer supervision", "nadzor.h": "Designer supervision on&nbsp;site",
-    "nadzor.lead": "A mistake at the rough stage means redoing work after finishing. So I am on site: hundreds of calls and decisions so the renovation matches the project.",
-    "nadzor.l1": "Site visits and control of every stage", "nadzor.l2": "Detail decisions made on the spot", "nadzor.l3": "I deal with the contractors for you",
+    "nadzor.lead": "I control how the project is carried out at every stage: from engineering systems to finishing. No compromise on quality and no \"who cares what's behind the walls\".",
+    "nadzor.l1": "Coordinating all specialists", "nadzor.l2": "Checking technical solutions", "nadzor.l3": "Drawings followed precisely",
     "nadzor.price": "from&nbsp;200&nbsp;000&nbsp;₸", "nadzor.alt": "Saltanat at the plumbing manifold explaining the pipework", "nadzor.cap": "Plumbing layout: checked before the walls are closed",
     "about.kicker": "About the designer", "about.h": "Saltanat. A designer who lives on&nbsp;the building site",
     "about.lead": "Not from an office with pretty renders, but from the site: dust, contractors, dozens of decisions a day. She writes the series \"Design without illusions\" about what designers keep quiet about.",
@@ -345,31 +347,84 @@
     "lane.prev": "Previous", "lane.next": "Next", "pl.k": "Project visualisation",
     "proj.1": "Apartment", "proj.2": "Cottage", "proj.3": "Kitchen-living room", "proj.4": "Office", "proj.5": "Cafe", "proj.6": "Kids' room",
     "proj.ig": "More projects on Instagram", "proj.done": "Completed", "proj.wip": "In progress", "pt.g15": "Hallway with an ethnic accent", "pt.g27": "Bedroom", "pt.g23": "Marble bathroom", "pt.g46": "Living room", "pt.g25": "Walk-in wardrobe", "pt.g32": "Kitchen-dining room", "pt.g6": "Carved portal", "pt.g43": "Bedroom with a workspace", "pt.r5": "Kitchen with an island", "pt.r36": "Living room with a staircase", "pt.r13": "Dining room", "pt.r66": "Bedroom with ornament", "pt.r48": "Bathroom by the window", "pt.r17": "Hall", "pt.r28": "Living room", "pa.g15": "Hallway with a Kazakh chest and tus kiiz", "pa.g27": "Light bedroom with a chandelier and a soft headboard", "pa.g23": "Bathroom with a freestanding tub and marble walls", "pa.g46": "Living room with a velvet sofa", "pa.g25": "Walk-in wardrobe with glass fronts and lighting", "pa.g32": "Light kitchen-dining room with a chandelier", "pa.g6": "Dark blue carved portal between rooms, photo from the site", "pa.g43": "Bedroom with a desk by the window", "pa.r5": "Kitchen with a marble island and a crystal chandelier", "pa.r36": "Living and dining room with a staircase to the first floor", "pa.r13": "Dining room with a long table and two chandeliers", "pa.r66": "Bedroom with a rug with Kazakh ornament", "pa.r48": "Bathroom with a freestanding tub by the window", "pa.r17": "Hall with a stained glass door and a chandelier", "pa.r28": "Living room with green armchairs and a marble table", "draw.kicker": "Working drawings", "draw.h": "Drawings that builders follow without questions", "draw.lead": "Sheets from a real apartment project: every tradesman gets a drawing with dimensions and heights.", "dt.obmer": "Measured plan", "dt.montazh": "Partition layout", "dt.planirovka": "Floor plan with furniture", "dt.svet": "Lighting plan", "da.obmer": "Measured apartment plan with room areas", "da.montazh": "Partition layout plan with isometric views", "da.planirovka": "Floor plan with furniture layout", "da.svet": "Lighting and switch plan",
-    "why.kicker": "Why me", "why.h": "One person is responsible for&nbsp;everything", "why.lead": "From the first drawing to the last vase\u00a0- no passing of responsibility between designer, foreman and store.",
-    "why.alt": "Saltanat pointing at the concrete columns of a future living room",
-    "why.n1": "3", "why.t1": "layout options", "why.d1": "Replanning and furniture layout\u00a0- you choose from three.",
-    "why.t2": "Guarantee on the renovation", "why.d2": "I answer for the result of the work, not just for the picture.",
-    "why.t3": "Instalments", "why.d3": "The renovation and the project can be paid in parts.",
-    "why.t4": "Free site visit", "why.d4": "I come, look and calculate\u00a0- with no obligation on your side.",
-    "price.kicker": "Prices", "price.h": "What a project costs", "price.lead": "I calculate the exact cost after a free site visit: area, condition of the property, scope of work.",
+    "why.kicker": "Advantages", "why.h": "Why work with me?", "why.lead": "Because I keep the whole process under control\u00a0- from the first drawing to the final interior details. I coordinate, check, agree and make sure every participant works towards one result.",
+    "why.alt": "Saltanat pointing at the concrete columns of a future living room", "why.t1": "Three layout options", "why.d1": "Replanning and furniture layout\u00a0- you choose from three.",
+    "why.t2": "Guarantee on the renovation", "why.d2": "Set out in the contract: I answer for the result of the works, not just for the picture.",
+    "why.t3": "Staged payment", "why.d3": "The design project is paid in stages.",
+    "price.kicker": "Prices", "price.h": "What a project costs", "price.lead": "I calculate the exact cost after a site visit: area, condition of the property, scope of work.",
     "price.t1": "Working drawings", "price.p1": "from&nbsp;5&nbsp;000&nbsp;₸/m²", "price.d1": "Drawings for the trades: electrics, plumbing, partitions, ceilings, tiling.",
     "price.t2": "Design project with visualisation", "price.p2": "from&nbsp;15&nbsp;000&nbsp;₸/m²", "price.d2": "Three layout options, visualisation of every room and a full set of working drawings.",
     "price.t3": "Designer supervision", "price.p3": "from&nbsp;200&nbsp;000&nbsp;₸", "price.d3": "Site visits, control of the stages and detail decisions while the renovation is under way.",
-    "price.note": "Turnkey renovation and furnishing are estimated after a site visit. Instalments are available.",
-    "how.kicker": "How we work", "how.h": "Five steps to&nbsp;a finished interior",
-    "how.t1": "Request and free site visit", "how.d1": "I look at the property, listen to how you live and estimate a budget range.",
-    "how.t2": "Measurements and three layouts", "how.d2": "A measured plan and three replanning options with furniture layouts.",
-    "how.t3": "Design project and drawings", "how.d3": "Visualisation of the rooms and working drawings for every trade.",
-    "how.t4": "Renovation and supervision", "how.d4": "Tested contractors, stage control, decisions on site.",
-    "how.t5": "Furnishing and handover", "how.d5": "Furniture, lighting, textiles and decor in place. You walk into a finished home.",
+    "price.note": "Turnkey renovation and furnishing are estimated after a site visit. The design project is paid in stages.",
+    "how.kicker": "How we work", "how.h": "Four steps to&nbsp;a finished interior",
+    "how.t1": "Request, site visit, consultation", "how.d1": "I look at the property, listen to how you live and estimate a budget range.",
+    "how.t2": "Contract and measurements", "how.d2": "A measured plan and three layout options\u00a0- we approve one of the three.",
+    "how.t3": "Design project", "how.d3": "Drawings and 3D visualisation of every room.",
+    "how.t4": "Renovation, furnishing, handover", "how.d4": "Renovation with designer supervision, furnishing and handover of the finished interior.",
     "how.alt": "Saltanat on site by the windows talking about the stages of renovation",
-    "kont.kicker": "Contacts", "kont.h": "Let's start with&nbsp;a free site visit", "kont.lead": "Write on WhatsApp or leave your number: I will call back, clarify the task and suggest a time to meet on site.",
+    "kont.kicker": "Contacts", "kont.h": "Let's start with&nbsp;a site visit", "kont.lead": "Write on WhatsApp or leave your number: I will call back, clarify the task and suggest a time to meet on site.",
     "kont.ig": "Instagram salt.design",
     "kont.i1": "Astana, work at the client's property. Advertising and visits: Astana, Karaganda, Almaty, Ust-Kamenogorsk", "kont.i2": "Mon-Fri 9:00-18:00", "kont.i3": "Personal blog \"Design without illusions\":",
     "form.h": "Request a site visit", "form.name": "Name", "form.name.ph": "How should I address you", "form.phone": "Phone", "form.err": "Enter a phone number of at least 10 digits.",
     "form.msg": "About the property", "form.msg.ph": "78 m² apartment, new build, need a design project and renovation", "form.btn": "Send via WhatsApp", "form.note": "The request opens in WhatsApp with a ready text. I reply personally.",
     "thanks.h": "Thank you!", "thanks.p": "The request has gone to WhatsApp. I will reply during working hours, Mon-Fri 9:00-18:00.",
-    "foot.tag": "Interior design and turnkey renovation, Astana", "sticky.call": "Call"
+    "foot.tag": "Interior design and turnkey renovation, Astana", "sticky.call": "Call",
+    "remont.l4": "Transparent purchasing of rough and finishing materials",
+    "smeta.kicker": "Furnishing",
+    "smeta.h": "How I estimate costs and&nbsp;choose materials",
+    "smeta.lead": "For every room\u00a0- a mood board with the price of each item and the total. You see the budget before buying and compare options.",
+    "smeta.t1": "Project estimate",
+    "smeta.d1": "I count every item from the drawings: rough and finishing materials, furniture, lighting.",
+    "smeta.t2": "Mood board per room",
+    "smeta.d2": "Tiles, plumbing, fittings and colours on one sheet\u00a0- with the price of each item.",
+    "smeta.t3": "Choosing between options",
+    "smeta.d3": "Two furnishing options with a total. You approve before anything is ordered.",
+    "smeta.t4": "Transparent purchasing",
+    "smeta.d4": "I order from trusted suppliers, receive the goods and arrange them on site.",
+    "mb.tag": "Mood board",
+    "mb.1": "Guest bathroom, option 1",
+    "mb.2": "Guest bathroom, option 2",
+    "mb.3": "Men's bathroom, option 1",
+    "mb.4": "Men's bathroom, option 2",
+    "mb.5": "Master bathroom, option 1",
+    "mb.6": "Master bathroom, option 2",
+    "kp.tag": "Selected for the project",
+    "kp.aria": "Mood boards and selections for the project",
+    "proj.dp": "Design project",
+    "pt.hall": "Hallway in soft lines",
+    "pt.dining": "Dining room with a chandelier",
+    "pa.hall": "Hallway with a soft curved wall and wood-look wardrobes",
+    "pa.dining": "Dining room with a crystal chandelier, an arch and glass cabinets",
+    "mba.1": "Mood board: guest bathroom, option 1, plumbing and colours with the price of each item",
+    "mba.2": "Mood board: guest bathroom, option 2, plumbing and colours with the price of each item",
+    "mba.3": "Mood board: men's bathroom, option 1, plumbing and colours with the price of each item",
+    "mba.4": "Mood board: men's bathroom, option 2, plumbing and colours with the price of each item",
+    "mba.5": "Mood board: master bathroom, option 1, plumbing and colours with the price of each item",
+    "mba.6": "Mood board: master bathroom, option 2, plumbing and colours with the price of each item",
+    "kt.vanity": "Vanity and sconces in the bathroom",
+    "ka.vanity": "Dusty pink vanity with brass handles, framed mirror and sconces",
+    "kt.wc": "Bathroom: fronts and chandelier",
+    "ka.wc": "Powder pink fronts, marble niche and a glass chandelier in the bathroom",
+    "kt.bath": "Bathtub by the window",
+    "ka.bath": "Freestanding bathtub by the window with a brass mixer",
+    "kt.bath2": "Bathroom with a tub",
+    "ka.bath2": "Bathroom with a tub, vanity and a glass drop chandelier",
+    "kt.armchair": "Armchair in the living room",
+    "ka.armchair": "Green armchair with a wooden frame by the window",
+    "kt.tvwall": "TV area",
+    "ka.tvwall": "Wooden TV wall with shelves and lighting",
+    "kt.ctable": "Coffee table",
+    "ka.ctable": "Round table with a marble top by a leather sofa",
+    "kt.desk": "Workspace by the window",
+    "ka.desk": "Desk by the window, shelving and a table lamp",
+    "kt.console": "Console and mirror",
+    "ka.console": "Wooden console, antiqued mirror and a lamp",
+    "kt.buffet": "Sideboard under the stairs",
+    "ka.buffet": "Dark sideboard with porcelain and a lamp under the stairs",
+    "kt.bench": "Bench in the hallway",
+    "ka.bench": "Bench with floral upholstery and a burgundy radiator",
+    "kt.kitchen": "Dining table in the kitchen",
+    "ka.kitchen": "Wooden table and upholstered chairs in the kitchen"
   };
   var RU = I18N.ru;
   var iEls = [].slice.call(doc.querySelectorAll("[data-i]"));
@@ -470,7 +525,6 @@
     });
   }
 
-  var year = doc.getElementById("year"); if (year) year.textContent = String(new Date().getFullYear());
 
   /* ---------- Старт ---------- */
   function start() {
