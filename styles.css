@@ -209,7 +209,16 @@ body.menu-open { overflow: hidden; }
 .plan .tv { transform: translate(400px, 228px); }
 .plan .plant { transform: translate(526px, 60px); }
 .plan .table { transform: translate(130px, 120px); }
-.plan .island { transform: translate(110px, 172px); }
+.plan .island { transform: translate(118px, 70px); }
+.plan .csofa { transform: translate(384px, 34px); opacity: 0; }
+.plan .glass line { stroke: var(--mint); stroke-width: 2; }
+.plan .glass, .plan .bath-a, .plan .bath-b { transition: opacity .6s; }
+.plan .glass, .plan .bath-b { opacity: 0; }
+.plan .fx .gl { fill: none; stroke: var(--mint); stroke-width: 2.4; }
+.plan.p1 .glass, .plan.p2 .bath-b, .plan.p2 .csofa { opacity: 1; }
+.plan.p2 .bath-a, .plan.p2 .sofa, .plan.p2 .plant, .plan.p2 .l-k, .plan.p2 .l-l { opacity: 0; }
+.plan.p2 .l-kl { opacity: 1; }
+.plan.p2 .w-k { transform: scaleY(0); }
 .plan .bed { transform: translate(182px, 262px) scale(.88, .82); }
 .plan .ward { transform: translate(78px, 262px) rotate(90deg) scale(1, 1); }
 .plan .ward2 { transform: translate(84px, 386px) scale(.36, 1); }
