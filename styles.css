@@ -216,9 +216,15 @@ body.menu-open { overflow: hidden; }
 .plan .glass, .plan .bath-b { opacity: 0; }
 .plan .fx .gl { fill: none; stroke: var(--mint); stroke-width: 2.4; }
 .plan.p1 .glass, .plan.p2 .bath-b, .plan.p2 .csofa { opacity: 1; }
-.plan.p2 .bath-a, .plan.p2 .sofa, .plan.p2 .plant, .plan.p2 .l-k, .plan.p2 .l-l { opacity: 0; }
-.plan.p2 .l-kl { opacity: 1; }
+.plan.p2 .bath-a, .plan.p2 .sofa, .plan.p2 .plant, .plan.p2 .w-h1 { opacity: 0; }
+.plan .w2, .plan .w2s { opacity: 0; transition: opacity .6s; }
+.plan.p2 .w2, .plan.p2 .w2s { opacity: 1; }
 .plan.p2 .w-k { transform: scaleY(0); }
+.plan .w-h1 { transition: opacity .6s; }
+.plan.p2 .l-l { transform: translate(100px, -26px); }
+.plan.p2 .l-b { transform: translate(203px, 274px); }
+.plan.p2 .bed { transform: translate(162px, 334px) scale(.8, .6); }
+.plan.p1 .table { opacity: 0; }
 .plan .bed { transform: translate(182px, 262px) scale(.88, .82); }
 .plan .ward { transform: translate(78px, 262px) rotate(90deg) scale(1, 1); }
 .plan .ward2 { transform: translate(84px, 386px) scale(.36, 1); }
