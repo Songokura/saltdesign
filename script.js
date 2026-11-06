@@ -5,6 +5,12 @@
   root.classList.add("js");
   var ASSET_V = ((doc.currentScript && doc.currentScript.src.match(/[?&]v=([^&]+)/)) || [])[1] || "";
   var REDUCED = W.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  /* плавная прокрутка колесом мыши (Lenis); на тач и при «уменьшить движение» - обычная */
+  var lenis = null;
+  if (W.Lenis && !REDUCED && W.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    lenis = new W.Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 0.9 });
+    (function raf(t) { lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
+  }
   var clamp = function (v, a, b) { return Math.max(a === undefined ? 0 : a, Math.min(b === undefined ? 1 : b, v)); };
   var easeOut = function (x) { return 1 - Math.pow(1 - x, 3); };
   var smooth = function (x) { x = clamp(x); return x * x * (3 - 2 * x); };
@@ -74,6 +80,7 @@
     var was = doc.body.classList.contains("menu-open");
     if (open === was) return;
     doc.body.classList.toggle("menu-open", open);
+    if (lenis) { if (open) lenis.stop(); else lenis.start(); }
     behind.forEach(function (el) { if (el) { if (open) el.setAttribute("inert", ""); else el.removeAttribute("inert"); } });
     burger.setAttribute("aria-expanded", open ? "true" : "false");
     if (open) {
@@ -102,7 +109,8 @@
     if (!el) return false;
     setMenu(false);
     var top = Math.max(0, targetTop(el));
-    if (instant || REDUCED) { root.style.scrollBehavior = "auto"; W.scrollTo(0, top); root.style.scrollBehavior = ""; }
+    if (lenis) lenis.scrollTo(top, instant ? { immediate: true, force: true } : { duration: 1.2, force: true });
+    else if (instant || REDUCED) { root.style.scrollBehavior = "auto"; W.scrollTo(0, top); root.style.scrollBehavior = ""; }
     else W.scrollTo({ top: top, behavior: "smooth" });
     return true;
   }
