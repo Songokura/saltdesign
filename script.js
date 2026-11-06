@@ -385,7 +385,7 @@
     "about.style": "Ethnic tradition, minimalism and modernity. Soft. Subtle. Precise.",
     "about.alt": "Saltanat, interior designer at salt.design, on a site at the rough stage", "about.alt2": "Saltanat on site by the window",
     "proj.kicker": "Projects", "proj.h": "I design and deliver interiors", "proj.lead": "Photos of completed projects and visualisations of projects in progress: apartments and private houses.",
-    "lane.prev": "Previous", "lane.next": "Next", "pl.k": "Project visualisation",
+    "lane.prev": "Previous", "lane.next": "Next", "lb.aria": "Photo viewer", "lb.close": "Close", "pl.k": "Project visualisation",
     "proj.1": "Apartment", "proj.2": "Cottage", "proj.3": "Kitchen-living room", "proj.4": "Office", "proj.5": "Cafe", "proj.6": "Kids' room",
     "proj.ig": "More projects on Instagram", "proj.done": "Completed", "proj.wip": "In progress", "pt.g15": "Hallway with an ethnic accent", "pt.g27": "Bedroom", "pt.g23": "Marble bathroom", "pt.g46": "Living room", "pt.g25": "Walk-in wardrobe", "pt.g32": "Kitchen-dining room", "pt.g6": "Interior door portal", "pt.g43": "Bedroom with a workspace", "pt.r5": "Kitchen with an island", "pt.r36": "Living room with a staircase", "pt.r13": "Dining room", "pt.r66": "Bedroom", "pt.r48": "Bathroom by the window", "pt.r17": "Hall", "pt.r28": "Living room", "pa.g15": "Hallway with a Kazakh chest and tus kiiz", "pa.g27": "Light bedroom with a chandelier and a soft headboard", "pa.g23": "Bathroom with a freestanding tub and marble walls", "pa.g46": "Living room with a velvet sofa", "pa.g25": "Walk-in wardrobe with glass fronts and lighting", "pa.g32": "Light kitchen-dining room with a chandelier", "pa.g6": "Dark blue door portal with sliding doors and ornamental glazing", "pa.g43": "Bedroom with a desk by the window", "pa.r5": "Kitchen with an island and a crystal chandelier", "pa.r36": "Living and dining room with a staircase to the first floor", "pa.r13": "Dining room with a long table and two chandeliers", "pa.r66": "Bedroom with a Kazakh-patterned rug", "pa.r48": "Bathroom with a freestanding tub by the window", "pa.r17": "Hall with a stained glass door and a chandelier", "pa.r28": "Living room with green armchairs and a coffee table", "draw.h": "Working documentation", "draw.lead": "Excerpts from the working documentation of an apartment project.", "dt.obmer": "Measured plan", "dt.montazh": "Partition layout", "dt.planirovka": "Floor plan with furniture", "dt.svet": "Lighting plan", "da.obmer": "Measured apartment plan with room areas", "da.montazh": "Partition layout plan with isometric views", "da.planirovka": "Floor plan with furniture layout", "da.svet": "Lighting and switch plan",
     "why.kicker": "Advantages", "why.h": "Why work with me?", "why.lead": "Because I keep the whole process under control\u00a0- from the first drawing to the final interior details. I coordinate, check, approve and make sure every participant works towards one result.",
@@ -598,6 +598,102 @@
     }
     update();
     if (INTRO < 1) requestAnimationFrame(runIntro);
+  }
+
+  /* ---------- просмотр фото крупно: клик по фото, листание, приближение и перетаскивание ---------- */
+  var lb = doc.getElementById("lb");
+  if (lb) {
+    var lbImg = lb.querySelector(".lb-img"), lbCap = lb.querySelector(".lb-cap"), lbN = lb.querySelector(".lb-n");
+    var lbPrev = lb.querySelector(".lb-prev"), lbNext = lb.querySelector(".lb-next"), lbX = lb.querySelector(".lb-x");
+    var lbList = [], lbI = 0, lbBack = null, z = 1, tx = 0, ty = 0, ZMAX = 2.4;
+    lbImg.setAttribute("draggable", "false");
+    var lbKey = function (img) { return img.closest(".gal, .lane, .draws, .why-real") || img.closest("section") || doc.body; };
+    var lbCaption = function (img) {
+      var f = img.closest("figure, li"), c = f && f.querySelector("figcaption, .proj-t, .cap");
+      var s = c ? c.textContent.replace(/\s+/g, " ").trim() : "";
+      return s || img.getAttribute("alt") || "";
+    };
+    var lbApply = function () { lbImg.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + z + ")"; lb.classList.toggle("zoomed", z > 1); };
+    var lbClamp = function () { var w = lbImg.offsetWidth, h = lbImg.offsetHeight; tx = clamp(tx, w * (1 - z), 0); ty = clamp(ty, h * (1 - z), 0); };
+    var lbReset = function () { z = 1; tx = 0; ty = 0; lbImg.style.transform = ""; lb.classList.remove("zoomed"); };
+    var lbShow = function (i) {
+      var n = lbList.length; lbI = (i + n) % n;
+      var img = lbList[lbI];
+      lbReset(); lb.classList.add("loading");
+      lbImg.onload = function () { lb.classList.remove("loading"); };
+      lbImg.src = img.getAttribute("data-full");
+      lbImg.alt = img.getAttribute("alt") || "";
+      lbCap.textContent = lbCaption(img);
+      lbN.textContent = n > 1 ? (lbI + 1) + " / " + n : "";
+      lbPrev.hidden = lbNext.hidden = n < 2;
+      if (n > 1) [1, -1].forEach(function (d) { var pre = new Image(); pre.src = lbList[(lbI + d + n) % n].getAttribute("data-full"); });
+    };
+    var lbOpen = function (img) {
+      var key = lbKey(img);
+      lbList = [].filter.call(doc.querySelectorAll("img[data-full]"), function (x) { return x.offsetWidth > 0 && lbKey(x) === key; });
+      if (lbList.indexOf(img) < 0) lbList = [img];
+      lbBack = doc.activeElement;
+      lb.hidden = false; doc.body.classList.add("lb-open"); if (lenis) lenis.stop();
+      lbShow(lbList.indexOf(img));
+      requestAnimationFrame(function () { requestAnimationFrame(function () { lb.classList.add("open"); }); });
+      lbX.focus({ preventScroll: true });
+    };
+    var lbClose = function () {
+      lb.classList.remove("open"); doc.body.classList.remove("lb-open"); if (lenis) lenis.start();
+      setTimeout(function () { if (!lb.classList.contains("open")) { lb.hidden = true; lbImg.removeAttribute("src"); } }, 320);
+      if (lbBack && lbBack.focus) lbBack.focus({ preventScroll: true });
+    };
+    [].forEach.call(doc.querySelectorAll("img[data-full]"), function (img) {
+      if (img.closest("a")) return;
+      img.setAttribute("tabindex", "0"); img.setAttribute("role", "button");
+      img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); lbOpen(img); } });
+    });
+    doc.addEventListener("click", function (e) {
+      if (!e.target.closest || lb.contains(e.target)) return;
+      var img = e.target.closest("img[data-full]");
+      if (!img) { var a = e.target.closest(".draw a, .mb-card a"); if (a) img = a.querySelector("img[data-full]"); }
+      if (!img) return;
+      e.preventDefault(); lbOpen(img);
+    });
+    lbX.addEventListener("click", lbClose);
+    lbPrev.addEventListener("click", function () { lbShow(lbI - 1); });
+    lbNext.addEventListener("click", function () { lbShow(lbI + 1); });
+    lb.addEventListener("click", function (e) { if (e.target === lb || e.target.classList.contains("lb-fig")) lbClose(); });
+    doc.addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "Escape") { if (z > 1) lbReset(); else lbClose(); }
+      else if (e.key === "ArrowLeft" && lbList.length > 1) lbShow(lbI - 1);
+      else if (e.key === "ArrowRight" && lbList.length > 1) lbShow(lbI + 1);
+      else if (e.key === "Tab") {
+        var f = [lbX, lbPrev, lbNext].filter(function (b) { return !b.hidden; });
+        var k = f.indexOf(doc.activeElement);
+        e.preventDefault(); f[(k + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+      }
+    });
+    /* короткое нажатие - приблизить к точке или вернуть; тянуть - двигать кадр; свайп без приближения - листать */
+    var pd = null;
+    lbImg.addEventListener("pointerdown", function (e) {
+      if (e.button) return;
+      pd = { x: e.clientX, y: e.clientY, tx: tx, ty: ty, moved: false };
+      try { lbImg.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    lbImg.addEventListener("pointermove", function (e) {
+      if (!pd) return;
+      var dx = e.clientX - pd.x, dy = e.clientY - pd.y;
+      if (!pd.moved && Math.abs(dx) + Math.abs(dy) > 6) { pd.moved = true; lb.classList.add("panning"); }
+      if (pd.moved && z > 1) { tx = pd.tx + dx; ty = pd.ty + dy; lbClamp(); lbApply(); }
+    });
+    lbImg.addEventListener("pointerup", function (e) {
+      if (!pd) return;
+      var dx = e.clientX - pd.x, moved = pd.moved; pd = null; lb.classList.remove("panning");
+      if (!moved) {
+        if (z > 1) { lbReset(); return; }
+        var r = lbImg.getBoundingClientRect();
+        z = ZMAX; tx = (e.clientX - r.left) * (1 - z); ty = (e.clientY - r.top) * (1 - z); lbClamp(); lbApply();
+      } else if (z === 1 && lbList.length > 1 && Math.abs(dx) > 50) lbShow(lbI + (dx < 0 ? 1 : -1));
+    });
+    lbImg.addEventListener("pointercancel", function () { pd = null; lb.classList.remove("panning"); });
+    W.addEventListener("resize", function () { if (!lb.hidden) lbReset(); });
   }
   if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(function () { fitAll(); update(); });
   if (doc.readyState === "complete") start(); else W.addEventListener("load", start);
