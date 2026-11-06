@@ -222,8 +222,10 @@ body.menu-open { overflow: hidden; }
 .plan.p2 .w-k { transform: scaleY(0); }
 .plan .w-h1 { transition: opacity .6s; }
 .plan.p2 .l-l { transform: translate(100px, -26px); }
-.plan.p2 .l-b { transform: translate(203px, 274px); }
-.plan.p2 .bed { transform: translate(153px, 424px) rotate(-90deg) scale(.65, .62); }
+.plan.p2 .l-b { transform: translate(198px, 304px); }
+.plan.p2 .bed { transform: translate(240px, 424px) rotate(180deg) scale(.62); }
+.plan .sw-hall { transition: opacity .6s; }
+.plan.p2 .sw-hall { opacity: 0; }
 .plan .ward3 { transform: translate(283px, 334px); opacity: 0; }
 .plan .l-w2 { transform: translate(295px, 379px) rotate(-90deg); opacity: 0; }
 .plan.p2 .ward3, .plan.p2 .l-w2 { opacity: 1; }
