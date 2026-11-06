@@ -22,8 +22,8 @@
       menu: "Здравствуйте, Салтанат! Пишу с сайта salt.design. Хочу обсудить проект. Объект: ",
       sticky: "Здравствуйте, Салтанат! Пишу с сайта salt.design. Хочу обсудить проект. Объект: ",
       kontakty: "Здравствуйте, Салтанат! Пишу с сайта salt.design. Хочу договориться о выезде на объект. Адрес и площадь: ",
-      design: "Здравствуйте, Салтанат! Интересует дизайн-проект с визуализацией. Объект (город, площадь): ",
-      rabochiy: "Здравствуйте, Салтанат! Интересует рабочий проект (чертежи). Объект (город, площадь): ",
+      design: "Здравствуйте, Салтанат! Интересует дизайн-проект с 3D-визуализацией. Объект (город, площадь): ",
+      rabochiy: "Здравствуйте, Салтанат! Интересует рабочая документация (чертежи). Объект (город, площадь): ",
       remont: "Здравствуйте, Салтанат! Интересует ремонт под ключ с гарантией. Объект (город, площадь, состояние): ",
       kompl: "Здравствуйте, Салтанат! Интересует комплектация объекта. Объект и стадия ремонта: ",
       nadzor: "Здравствуйте, Салтанат! Интересует авторский надзор. Объект и стадия ремонта: "
@@ -35,7 +35,7 @@
       sticky: "Hello Saltanat! I am writing from salt.design. I would like to discuss a project. Property: ",
       kontakty: "Hello Saltanat! I am writing from salt.design. I would like to book a site visit. Address and area: ",
       design: "Hello Saltanat! I am interested in a design project with 3D visualisation. Property (city, area): ",
-      rabochiy: "Hello Saltanat! I am interested in working drawings. Property (city, area): ",
+      rabochiy: "Hello Saltanat! I am interested in working documentation (drawings). Property (city, area): ",
       remont: "Hello Saltanat! I am interested in a turnkey renovation with a guarantee. Property (city, area, condition): ",
       kompl: "Hello Saltanat! I am interested in full furnishing and procurement. Property and renovation stage: ",
       nadzor: "Hello Saltanat! I am interested in designer supervision. Property and renovation stage: "
