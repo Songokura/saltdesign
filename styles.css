@@ -182,7 +182,7 @@ body.menu-open { overflow: hidden; }
 .media .ph { height: min(66svh, 600px); aspect-ratio: 4 / 5; width: auto; max-width: 100%; }
 .media .ph:not(.plan-box) { border-radius: calc(var(--rp) * .55 * var(--o)) 0 calc(var(--rp) * .55 * var(--o)) 0; }
 #komplektaciya .ph > img { object-position: 50% 15%; }
-.media .ph.vid { aspect-ratio: 9 / 16; height: min(70svh, 620px); }
+.media .ph.vid { aspect-ratio: 9 / 16; height: min(calc(100svh - var(--hdr) - 56px), 860px); }
 .media .plan-box { height: auto; aspect-ratio: auto; width: 100%; max-width: 620px; background: transparent; border-radius: 0; transform: none; }
 .plan-box::after { display: none; }
 
@@ -491,7 +491,7 @@ body.menu-open .sticky { display: none; }
   .pw-svc .plate::after { display: none; }
   .svc-in { height: auto; }
   .media .ph { height: 520px; }
-  .media .ph.vid { height: 560px; }
+  .media .ph.vid { height: min(calc(100svh - 40px), 640px); }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
