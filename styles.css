@@ -58,6 +58,7 @@ h2.h-display { font-size: clamp(30px, 3.5vw, 50px); }
 .lead { font-size: 17px; line-height: 1.55; color: var(--mute); font-weight: 300; }
 .sec-head { margin-bottom: 32px; }
 .sec-head .lead, .h-display + .lead { margin-top: 16px; }
+.lead + .lead-2 { margin-top: 12px; }
 
 /* ---------- кнопки ---------- */
 .btn {
